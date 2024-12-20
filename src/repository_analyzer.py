@@ -1,8 +1,10 @@
-import os
 import re
-from src.chat.openai_adapter import OpenaiAdapter
-from src.prompt.get_prompt import GetPrompt
+from chat.openai_adapter import OpenaiAdapter
+from prompt.get_prompt import GetPrompt
 from pathlib import Path
+from utils.logging_config import setup_logger
+
+logger = setup_logger(__name__)
 
 class RepositoryAnalyzer:
     def __init__(self, base_dir: str):
@@ -137,7 +139,7 @@ class RepositoryAnalyzer:
                         extension = path.suffix[1:] if path.suffix else path.name
                         source_files.append(f"### {rel_path}\n```{extension}\n{content}\n```\n")
                     except Exception as e:
-                        print(f"Error reading {path}: {e}")
+                        logger.error(f"ファイル読み込みエラー {path}: {e}")
                         
         return '\n'.join(source_files)
 
@@ -153,9 +155,10 @@ class RepositoryAnalyzer:
         if path.is_file():
             try:
                 if path.stat().st_size > self.max_file_size:
-                    print(f"Warning: Skipping large file {path} ({path.stat().st_size / 1024 / 1024:.2f}MB)")
+                    logger.warning(f"大きすぎるファイルをスキップします: {path} ({path.stat().st_size / 1024 / 1024:.2f}MB)")
                     return True
             except OSError:
+                logger.error(f"ファイルアクセスエラー: {path}")
                 return True
                 
         return False
