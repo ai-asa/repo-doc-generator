@@ -33,7 +33,7 @@ pip install -r requirements.txt
 ```
 
 3. 環境変数の設定:
-- `.env.example`を`.env`にコピーし、必要なAPI keyを設定:
+`.env.example`を`.env`にコピーし、必要なAPI keyを設定:
   ```
   OPENAI_API_KEY=your_openai_api_key_here
   ```
