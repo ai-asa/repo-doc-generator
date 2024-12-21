@@ -1,7 +1,7 @@
 # ChatGPT o1 用リポジトリ分析ツール
 
 ## 概要
-このツールは、GitHubリポジトリのソースコードを自動的に分析し、プロジェクトの構造や概要をMarkdown形式のドキュメントとして生成します。OpenAIのGPT-4やGoogle GeminiのAIモデルを活用して、コードの理解と文書化を支援します。o1にリポジトリの情報を渡すプロンプトとして活用します。
+このツールは、GitHubリポジトリのソースコードを自動的に分析し、プロジェクトの構造や概要をMarkdown形式のドキュメントとして生成します。OpenAIのAIモデルを活用して、コードの理解と文書化を支援します。o1にリポジトリの情報を渡すプロンプトとして活用します。
 
 ## 主な機能
 - プロジェクトディレクトリの自動スキャンと分析
@@ -14,7 +14,6 @@
 - 必要なPythonパッケージ:
   ```
   openai>=1.0.0
-  google-generativeai>=0.3.0
   python-dotenv
   pathlib
   configparser
@@ -37,7 +36,6 @@ pip install -r requirements.txt
 - `.env.example`を`.env`にコピーし、必要なAPI keyを設定:
   ```
   OPENAI_API_KEY=your_openai_api_key_here
-  GEMINI_API_KEY=your_gemini_api_key_here
   ```
 
 ## 使用方法
@@ -66,7 +64,6 @@ gen_ai_model = gpt-4o  # 使用するAIモデル
 ├── settings.ini
 └── src/
     ├── chat/
-    │   ├── gemini_adapter.py
     │   └── openai_adapter.py
     ├── main.py
     ├── output/
