@@ -78,6 +78,6 @@ gen_ai_model = gpt-4o  # 使用するAIモデル
 このプロジェクトはApache License 2.0のもとで公開されています。詳細は[LICENSE](LICENSE)ファイルを参照してください。
 
 ## 注意事項
-- OpenAIかGoogle GeminiのAPIキーが必要です
+- OpenAIのAPIキーが必要です
 - 大きなファイル（1MB以上）は自動的にスキップされます
 - 特定のディレクトリ（.git, node_modules等）は解析から除外されます 
